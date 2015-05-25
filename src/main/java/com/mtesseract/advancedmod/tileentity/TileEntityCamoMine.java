@@ -35,7 +35,16 @@ public class TileEntityCamoMine extends TileEntityAdvancedMod implements ISidedI
         if (timer == 0 && !worldObj.isRemote)
         {
             List<Entity> entities = worldObj.getEntitiesWithinAABB(EntityPlayer.class, AxisAlignedBB.getBoundingBox(xCoord - 1, yCoord - 1, zCoord - 1, xCoord + 2, yCoord + 2, zCoord + 2));
-            if (entities.size() > 0) worldObj.createExplosion(null, xCoord + 0.5F, yCoord + 0.5F, zCoord + 0.5F, 3.0F, true);
+            for (Entity entity : entities)
+            {
+                if(target == "" || entity.getCommandSenderName().equalsIgnoreCase(target))
+                {
+                    worldObj.createExplosion(null, xCoord + 0.5F, yCoord + 0.5F, zCoord + 0.5F, 3.0F, true);
+                    break;
+                }
+            }
+
+
         }
 
     }
@@ -48,6 +57,7 @@ public class TileEntityCamoMine extends TileEntityAdvancedMod implements ISidedI
     public void setTimer(int timer)
     {
         this.timer = timer;
+        markDirty();
     }
 
     public String getTarget()
@@ -58,6 +68,7 @@ public class TileEntityCamoMine extends TileEntityAdvancedMod implements ISidedI
     public void setTarget(String target)
     {
         this.target = target;
+        markDirty();
     }
 
     @Override
@@ -66,6 +77,7 @@ public class TileEntityCamoMine extends TileEntityAdvancedMod implements ISidedI
         if(id == 0)
         {
             target = text;
+            markDirty();
         }
     }
 

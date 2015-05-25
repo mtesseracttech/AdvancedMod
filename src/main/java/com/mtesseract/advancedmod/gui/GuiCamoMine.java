@@ -50,6 +50,13 @@ public class GuiCamoMine extends GuiAdvancedMod
         this.tbPlayerName.setText(te.getTarget());
     }
 
+
+    @Override
+    public void onTextfieldUpdate(int id)
+    {
+        if (id == 0) tbPlayerName.setText(te.getTarget());
+    }
+
     /**
      * Called when the mouse is clicked.
      */

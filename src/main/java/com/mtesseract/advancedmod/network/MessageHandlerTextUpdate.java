@@ -1,8 +1,11 @@
 package com.mtesseract.advancedmod.network;
 
+import com.mtesseract.advancedmod.gui.GuiAdvancedMod;
 import com.mtesseract.advancedmod.tileentity.TileEntityAdvancedMod;
 import cpw.mods.fml.common.network.ByteBufUtils;
 import io.netty.buffer.ByteBuf;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 
@@ -53,6 +56,11 @@ public class MessageHandlerTextUpdate extends MessageXYZ<MessageHandlerTextUpdat
     public void handleClientSide(MessageHandlerTextUpdate message, EntityPlayer player)
     {
         handleServerSide(message, player);
+        GuiScreen gui = Minecraft.getMinecraft().currentScreen;
+        if(gui instanceof GuiAdvancedMod)
+        {
+            ((GuiAdvancedMod) gui).onTextfieldUpdate(message.id);
+        }
     }
 
     @Override

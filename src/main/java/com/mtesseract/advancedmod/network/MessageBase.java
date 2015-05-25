@@ -1,5 +1,6 @@
 package com.mtesseract.advancedmod.network;
 
+import com.mtesseract.advancedmod.AdvancedMod;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
@@ -24,7 +25,7 @@ public abstract class MessageBase<REQ extends IMessage> implements IMessage, IMe
         }
         else
         {
-            handleClientSide(message, null);
+            handleClientSide(message, AdvancedMod.proxy.getClientPlayer());
         }
         return null;
     }
