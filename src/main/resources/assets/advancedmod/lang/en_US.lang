@@ -1,0 +1,20 @@
+# Items
+# ex.: item.advancedmod:itemName.name=Name Item
+
+
+# Blocks
+# ex.: tile.advancedmod:blockName.name=Name Block
+tile.mineCamo.name=Camo Mine
+
+# Creative Tabs
+# ex.: itemGroup.advancedmod=Advanced Mod
+
+# KeyBindings
+key.categories.advancedmod=Advanced Mod
+key.advancedmod.explode=Explode
+
+# GUI
+gui.advancedmod.mineCamo.timer=Timer: %s
+gui.advancedmod.mineCamo.target=Target:
+gui.advancedmod.mineCamo.button.reset=Reset
+gui.advancedmod.mineCamo.button.restart=Restart
